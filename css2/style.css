@@ -1,0 +1,23 @@
+
+#sale {
+    left:380px;
+    top:-20px;
+    position: absolute;
+    display: inline-block;
+    background-color: red;
+    width: 40px;
+    height: 40px;
+    align-content: center;
+    text-align: center;
+    border-radius: 80px;
+}
+#image {
+    position: relative;
+    width: 400px;
+    height: 250px;
+    background-image: url('./desk1.png');
+}
+#table {
+    margin: 0 auto;
+    border-spacing: 20px;
+}
