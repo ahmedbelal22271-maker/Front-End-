@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>25 Minute Countdown</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+    #timer {
+      font-size: 4rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="timer">25:00</div>
+
+  <script>
+    // length of session in minutes
+    const sessionMinutes = 25;
+
+    // calculate the target end time
+    const endTime = new Date().getTime() + sessionMinutes * 60 * 1000;
+
+    const timerElement = document.getElementById("timer");
+
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const timeLeft = endTime - now;
+
+      // calculate minutes and seconds
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      // format as MM:SS
+      timerElement.textContent = 
+        `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
+      // when time is up
+      if (timeLeft <= 0) {
+        clearInterval(countdown);
+        timerElement.textContent = "Time's up!";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
