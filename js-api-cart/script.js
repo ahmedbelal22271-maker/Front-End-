@@ -12,8 +12,14 @@ async function getData(){
         console.log(carts)
         console.log(result)
 
+        cart_index = 1
+
         for (const cart of carts){
+            index_text = document.createElement("h1");
+            index_text.textContent = `Cart Number:${cart_index}, total number of products:${cart['totalProducts']}, total cost of products:${cart['total']}`;
+            document.body.appendChild(index_text)
             addDiv(cart);
+            cart_index++;
         }
         
     } catch (error){
@@ -39,10 +45,10 @@ function addDiv(cart){
         img.src = product['thumbnail'];
 
         title = document.createElement("p");
-        title.textContent  = product['title'];
+        title.textContent  = `${product['quantity']} x ${product['title']}`;
 
         price = document.createElement("p");
-        price.textContent = product['price']
+        price.textContent = `${product['quantity']} x ${product['price']}`
 
         ChildDiv.appendChild(img);
         ChildDiv.appendChild(title);
